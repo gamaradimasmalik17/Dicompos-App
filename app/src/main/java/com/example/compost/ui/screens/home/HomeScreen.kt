@@ -629,7 +629,7 @@ fun indicators(showGraph: (String) -> Unit) {
                 modifier = Modifier.size(width = 111.dp, height = 106.dp), // Atur ukuran panjang dan lebar
                 indicatorValue = indicatorInfo?.phase?.toString() ?: "0.0", // Tanpa ikon
                 indicatorName = "Phase",
-                valueFontSize = 14.sp, // Ukuran font lebih kecil untuk "Phase"
+                valueFontSize = 12.sp, // Ukuran font lebih kecil untuk "Phase"
                 onClick = { showGraph("Phase") }
             )
         }
@@ -681,7 +681,7 @@ fun IndicatorCard(
 
             Text(
                 text = indicatorName,
-                style = MaterialTheme.typography.body1.copy(fontSize = 15.sp),
+                style = MaterialTheme.typography.body1.copy(fontSize = 14.sp),
                 textAlign = TextAlign.End,
                 color = Color(Green40.value)
             )
@@ -796,8 +796,6 @@ fun LineChartScreen(lineChartData: List<IndicatorRecord>) {
             setDrawGridLines(false)
 
         }
-
-
         // Configure the chart
         AndroidView(
             modifier = Modifier
@@ -820,9 +818,7 @@ fun LineChartScreen(lineChartData: List<IndicatorRecord>) {
                     valueFormatter = object : ValueFormatter() {
                         override fun getFormattedValue(value: Float): String {
                             val index = value.toInt()
-                            return if (lineChartData.isNotEmpty() && lineChartData.size == 1 && (index==-1 || index==1)) "" else if (lineChartData.isNotEmpty()) lineChartData[index].formattedInsertedAt else ""
-//                    val index = value.toInt()
-//                    return if (index < data.size) lineChartData[index].formattedInsertedAt else value.toString()
+                            return if (lineChartData.isNotEmpty() && lineChartData.size == 1 && (index == -1 || index == 1)) "" else if (lineChartData.isNotEmpty()) lineChartData[index].formattedInsertedAt else ""
                         }
                     }}
                 chart.data = lineData // Update the chart's data
@@ -832,86 +828,4 @@ fun LineChartScreen(lineChartData: List<IndicatorRecord>) {
 
     }
 }
-
-
-//@Composable
-//fun LineChartScreen(lineChartData: List<LineData>) {
-//    Box(
-//        modifier = Modifier
-//            .height(160.dp)
-//            .fillMaxWidth()
-//    ) {
-//        LineChart(
-//            linesChartData = transformToMultiLineChart(lineChartData),
-//            modifier = Modifier.fillMaxSize(),
-//            xAxisDrawer = SimpleXAxisDrawer(
-//                labelTextSize = TextUnit(11f, TextUnitType.Sp),
-//                labelRatio = 1,
-//                labelTextColor = Color(Green40.value) // Ubah warna tulisan pada sumbu X menjadi hijau
-//            )
-//        )
-//    }
-//}
-//
-//private fun transformToMultiLineChart(lineChartData: List<LineData>): List<LineChartData> {
-//    val temperaturePoints = lineChartData.filter { it.xValue == "Temperature" }
-//        .map { LineChartData.Point(it.yValue, it.xValue.toString()) }
-//    val moisturePoints = lineChartData.filter { it.xValue == "Moisture" }
-//        .map { LineChartData.Point(it.yValue, it.xValue.toString()) }
-//    val phPoints = lineChartData.filter { it.xValue == "Ph" }
-//        .map { LineChartData.Point(it.yValue, it.xValue.toString()) }
-//
-//    return listOf(
-//        LineChartData(
-//            points = temperaturePoints,
-//            startAtZero = true,
-//            lineDrawer = SolidLineDrawer(color = Color.Red) // Warna garis untuk Temperature
-//        ),
-//        LineChartData(
-//            points = moisturePoints,
-//            startAtZero = true,
-//            lineDrawer = SolidLineDrawer(color = Color.Blue) // Warna garis untuk Moisture
-//        ),
-//        LineChartData(
-//            points = phPoints,
-//            startAtZero = true,
-//            lineDrawer = SolidLineDrawer(color = Color.Green) // Warna garis untuk pH
-//        )
-//    )
-//}
-
-
-
-
-
-
-
-
-//@Composable
-//fun AppNameCard() {
-//    Card(
-//        modifier = Modifier
-//            .fillMaxWidth(),
-//             // tambahkan padding horizontal
-//        elevation = 8.dp,
-//        backgroundColor = Green40,
-//        shape = RoundedCornerShape(16.dp) // Menggunakan RoundedCornerShape dengan radius 16.dp
-//    ) {
-//        Column(
-//            modifier = Modifier.padding(vertical = 8.dp)
-//        ) {
-//            Text(
-//                text = "Dicompos", // Nama aplikasi
-//                style = MaterialTheme.typography.h6,
-//                textAlign = TextAlign.Center, // Set textAlign ke Center
-//                color = Color.White,
-//                modifier = Modifier.align(Alignment.CenterHorizontally) // Memusatkan teks secara horizontal
-//            )
-//        }
-//    }
-//}
-
-
-
-
 

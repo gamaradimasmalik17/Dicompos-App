@@ -32,7 +32,7 @@ fun provideRetrofit(
     gsonConverterFactory: GsonConverterFactory
 ): Retrofit {
     return Retrofit.Builder()
-        .baseUrl("https://test-proj-dic-har-irg-azk-dim-45yiaz3vqa-et.a.run.app/")
+        .baseUrl("https://digicomp.vercel.app/")
         .client(okHttpClient)
         .addConverterFactory(gsonConverterFactory)
         .build()
